@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://layers.app/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Results</title>
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color:  burlywood;
+            color: black;
+            padding: 20px 0;
+            border-bottom: 5px solid #b39e5c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .company-name {
+            font-size: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .top-container {
+            border-bottom: 5px solid #b39e5c;
+        }
+
+        .top-container img {
+            width: 100%;
+            height: 200px;
+            margin-bottom: -5px;
+        }
+
+        .footer_section {
+            width: 100%;
+            background-color: #252525;
+            height: auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            border-top: 5px solid #b39e5c;
+        }
+
+        .footer_section .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer_section .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .footer_section .col-lg-3,
+        .footer_section .col-sm-6 {
+            flex: 0 0 calc(25% - 20px);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .footer_section .col-lg-3,
+            .footer_section .col-sm-6 {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer_section .col-lg-3,
+            .footer_section .col-sm-6 {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+
+        .useful_text {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer_text {
+            font-size: 14px;
+            color: #ffffff;
+            margin: 0px;
+        }
+
+        .footer_menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer_menu li {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .footer_menu li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer_menu li a:hover {
+            color: #b39e5c;
+        }
+
+        .footer_section .location_text ul li::marker {
+            color: #ffffff;
+        }
+
+        .footer_section .location_text ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer_section .location_text ul li a:hover {
+            color: #b39e5c;
+        }
+
+        .copyright_section {
+            width: 100%;
+            float: left;
+            background-color: #ffffff;
+            height: auto;
+        }
+
+        .copyright_text {
+            width: 100%;
+            float: left;
+            font-size: 16px;
+            color: #252525;
+            text-align: center;
+            margin-left: 0px;
+        }
+
+        .copyright_text a {
+            color: #252525;
+        }
+
+        .result-body {
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('../images/background.png');
+            padding-bottom: 60px;
+        }
+
+        .results-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-container .text{
+            color: #b39e5c;
+            align-self: center;
+        }
+
+        .results-container table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .results-container th, .results-container td {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        .results-container th {
+            background-color: burlywood;
+            color: black;
+        }
+
+        .text-container{
+            text-align: center;
+        }
+
+        .header-body{
+            border-top: 5px solid #b39e5c;
+            padding: 75px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+            color: #b39e5c;
+        }
+
+        .nutrition-body {
+            padding: 50px;
+            background-color: #f2f2f2;
+            margin: 0 auto;
+            padding-right: 150px;
+            padding-left: 150px;
+        }
+
+        .nutrition-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-text {
+            color: #b39e5c;
+        }
+
+        .nutrition-content-text {
+            flex: 1;
+            padding-right: 20px;
+            font-size: 20px;
+            margin-right: 100px;
+        }
+
+        .nutrition-body img {
+            flex: 1;
+            max-width: 50%;
+            height: 400px;
+            border-radius: 5px;
+        }
+
+        .gym-body {
+            padding: 50px;
+            margin: 0 auto;
+            padding-right: 150px;
+            padding-left: 150px;
+        }
+
+        .gym-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gym-content-text {
+            flex: 1;
+            padding-right: 20px;
+            font-size: 20px;
+        }
+
+        .gym-body img {
+            flex: 1;
+            max-width: 50%;
+            height: 400px;
+            border-radius: 5px;
+            margin-right: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <div class="company-name">Company Name</div>
+    </div>
+    <div class="top-container">
+        <img src="../images/top.png" alt="top">
+    </div>
+    <div class = "result-body">
+        <div class="results-container">
+            <div class = text-container>
+                <h3>YOUR DAILY <span class="text">MACROS</span></h3>
+            </div>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>BMR</td>
+                    <td id="bmr-result"></td>
+                </tr>
+                <tr>
+                    <td>Calories</td>
+                    <td id="calorie-result"></td>
+                </tr>
+                <tr>
+                    <td>Protein</td>
+                    <td id="protein-result"></td>
+                </tr>
+                <tr>
+                    <td>Fat</td>
+                    <td id="fat-result"></td>
+                </tr>
+                <tr>
+                    <td>Carbs</td>
+                    <td id="carbs-result"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="header-body">
+        <div class = "title-container">
+            <div class="title">HERE'S WHAT THE COMPLETE</div>
+            <div class="subtitle">TRANSFORMATION PROGRAM INCLUDES</div>
+        </div>
+    </div>
+    <div class="nutrition-body">
+        <div class="title">NUTRITION <span id="plan-text" class="plan-text">PLAN</span></h3></div>
+        <div class="nutrition-content">
+            <div class="nutrition-content-text">
+                <p>Our nutrition plan is designed to help you achieve your fitness goals by providing a balanced and nutritious diet tailored to your needs.<br><br> You'll get personalized meal plans, tips on healthy eating, and guidance on portion control. Whether you're looking to lose weight, gain muscle, or simply maintain a healthy lifestyle, our nutrition plan has got you covered.</p>
+            </div>
+            <img src="../images/nutrition-plan.png" alt="Nutrition Plan Image">
+        </div>
+    </div>
+    <div class="gym-body">
+        <div class="title">GYM <span id="plan-text" class="plan-text">PROGRAM</span></h3></div>
+        <div class="gym-content">
+            <img src="../images/gym-program.png" alt="Gym Program Image">
+            <div class="gym-content-text">
+                <p>Fully customized and personalized workout routines tailored to your goals and body requirements, targeting all your muscles to help you achieve the body you've always dreamed of.<br><br> Incorporating proven strategies.<br><br> These routines are updated monthly to continually challenge your body with new exercises, preventing it from reaching a plateau.</p>
+            </div>
+        </div>
+    </div>
+    <div class="nutrition-body">
+        <div class="title">SUPPLEMENT <span id="plan-text" class="plan-text">GUIDE</span></h3></div>
+        <div class="nutrition-content">
+            <div class="nutrition-content-text">
+                <p>A detailed supplement guide to help you stock your pantry with effective products. <br><br>Ensure you gain the full benefits through proper use.<br><br>Avoid wasting money on ineffective supplements.</p>
+            </div>
+            <img src="../images/supplement.png" alt="Nutrition Plan Image">
+        </div>
+    </div>
+    <div class="gym-body">
+        <div class="title">24/7 CUSTOMER <span id="plan-text" class="plan-text">SUPPORT</span></h3></div>
+        <div class="gym-content">
+            <img src="../images/cutomer.png" alt="Gym Program Image">
+            <div class="gym-content-text">
+                <p>Don't worry, you will never feel lost. We are always available to answer your questions. Just send us an email, and our team will respond as soon as possible.<br><br>We will always be delighted to hear from you and assist you throughout your journey.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer_section layout_padding">
+        <div class="container-footer">
+           <div class="row">
+              <div class="col-lg-3 col-sm-6">
+                 <h3 class="useful_text">About</h3>
+                 <p class="footer_text">Welcome! We're your go-to destination for effortless calorie tracking and healthy living. Whether you're striving to shed a few pounds, maintain a balanced diet, or simply stay informed about your nutritional intake, our user-friendly platform empowers you to reach your health goals with ease. Say goodbye to guesswork and hello to precision – start your journey towards a healthier.</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <img src="../images/gym.png" alt="top">
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                 <h1 class="useful_text">Contact Us</h1>
+                 <div class="location_text">
+                    <ul>
+                       <li>
+                          <a href="https://wa.me/+201111105789"
+                              target="_blank">
+                              <span class="padding_left_10">Whatsapp</span>
+                          </a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/omarhafez__/"
+                            target="_blank">
+                            <span class="padding_left_10">Instagram</span>
+                        </a>
+                    </li>
+                      <li>
+                       <a href="tel:++201111105789">
+                           <span class="padding_left_10">Call: +20 1111 105 789</span>
+                       </a>
+                     </li>                    
+                     <li>
+                       <a href="mailto:omarrhhafez@gmail.com">
+                           </i><span class="padding_left_10">Email: omarrhhafez@gmail.com</span>
+                       </a>
+                   </li>                    
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="copyright_section">
+        <div class="container-copyright">
+           <p class="copyright_text">2024 All Rights Reserved.</p>
+        </div>
+     </div>
+     <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function displayResult(elementId, value) {
+            const resultDiv = document.getElementById(elementId);
+            if (value !== null) {
+                resultDiv.textContent = Math.round(value);
+            } else {
+                resultDiv.textContent = 'N/A';
+            }
+        }
+
+        const bmr = getQueryParameter('bmr');
+        const calories = getQueryParameter('calories');
+        const protein = getQueryParameter('protein');
+        const fat = getQueryParameter('fat');
+        const carbs = getQueryParameter('carbs');
+
+        displayResult('bmr-result', bmr);
+        displayResult('calorie-result', calories);
+        displayResult('protein-result', protein);
+        displayResult('fat-result', fat);
+        displayResult('carbs-result', carbs);
+    </script>
+</body>
+</html>

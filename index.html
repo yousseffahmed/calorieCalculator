@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://layers.app/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Calorie Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url('../images/background.png');
+        }
+
+        .header {
+            background-color:  burlywood;
+            color: black;
+            padding: 20px 0;
+            border-bottom: 5px solid #b39e5c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .company-name {
+            font-size: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .top-container {
+            border-bottom: 5px solid #b39e5c;
+            margin-bottom: 20px;
+        }
+
+        .top-container img {
+            width: 100%;
+            height: 200px;
+            margin-bottom: -5px;
+        }
+
+        .question-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px #b39e5c;
+            margin-top: 150px;
+            margin-bottom: 150px;
+        }
+
+        .question-container h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        .question-container h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #5c5c5c87;
+            text-align: center;
+        }
+
+        .question-container .question-number {
+            color: #b39e5c;
+        }
+
+        .radio-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .radio-buttons label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #666;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            width: 150px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .radio-buttons input[type="radio"] {
+            display: none;
+        }
+
+        .radio-buttons input[type="radio"]:checked + label {
+            background-color: #b39e5c;
+            color: #fff;
+        }
+
+        .radio-buttons label:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .next-button button {
+            display: block; 
+            background-color: #ffffff;
+            color: #b39e5c;
+            border: 1px solid #b39e5c;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+
+        .next-button button:hover {
+            background-color: #b39e5c;
+            color: #fff;
+        }
+
+        .footer_section {
+            width: 100%;
+            background-color: #252525;
+            height: auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            border-top: 5px solid #b39e5c;
+        }
+
+        .footer_section .container-footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer_section .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .footer_section .col-lg-3,
+        .footer_section .col-sm-6 {
+            flex: 0 0 calc(25% - 20px);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .footer_section .col-lg-3,
+            .footer_section .col-sm-6 {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer_section .col-lg-3,
+            .footer_section .col-sm-6 {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+
+        .useful_text {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer_text {
+            font-size: 14px;
+            color: #ffffff;
+            margin: 0px;
+        }
+
+        .footer_menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer_menu li {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .footer_menu li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer_menu li a:hover {
+            color: #b39e5c;
+        }
+
+        .footer_section .location_text ul li::marker {
+            color: #ffffff;
+        }
+
+        .footer_section .location_text ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer_section .location_text ul li a:hover {
+            color: #b39e5c;
+        }
+
+        .copyright_section {
+            width: 100%;
+            float: left;
+            background-color: #ffffff;
+            height: auto;
+        }
+
+        .copyright_text {
+            width: 100%;
+            float: left;
+            font-size: 16px;
+            color: #252525;
+            text-align: center;
+            margin-left: 0px;
+        }
+
+        .copyright_text a {
+            color: #252525;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <div class="company-name">Company Name</div>
+    </div>
+    <div class="top-container">
+        <img src="../images/top.png" alt="top">
+    </div>
+    <div class="question-container">
+        <h3>Question<span id="question-number" class="question-number">#1</span></h3>
+        <h2 id="question-text">WHAT IS YOUR GENDER?</h2>
+        <div class="radio-buttons" id="radio-buttons">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+        <div class="next-button">
+            <button id="next-button" disabled>NEXT QUESTION</button>
+            <button id="prev-button" style="display: none;">PREVIOUS QUESTION</button>
+        </div>
+    </div>
+    <div class="footer_section layout_padding">
+        <div class="container-footer">
+           <div class="row">
+              <div class="col-lg-3 col-sm-6">
+                 <h3 class="useful_text">About</h3>
+                 <p class="footer_text">Welcome! We're your go-to destination for effortless calorie tracking and healthy living. Whether you're striving to shed a few pounds, maintain a balanced diet, or simply stay informed about your nutritional intake, our user-friendly platform empowers you to reach your health goals with ease. Say goodbye to guesswork and hello to precision – start your journey towards a healthier.</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <img src="../images/gym.png" alt="top">
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                 <h1 class="useful_text">Contact Us</h1>
+                 <div class="location_text">
+                    <ul>
+                       <li>
+                          <a href="https://wa.me/+201111105789"
+                              target="_blank">
+                              <span class="padding_left_10">Whatsapp</span>
+                          </a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/omarhafez__/"
+                            target="_blank">
+                            <span class="padding_left_10">Instagram</span>
+                        </a>
+                    </li>
+                      <li>
+                       <a href="tel:++201111105789">
+                           <span class="padding_left_10">Call: +20 1111 105 789</span>
+                       </a>
+                     </li>                    
+                     <li>
+                       <a href="mailto:omarrhhafez@gmail.com">
+                           </i><span class="padding_left_10">Email: omarrhhafez@gmail.com</span>
+                       </a>
+                   </li>                    
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="copyright_section">
+        <div class="container-copyright">
+           <p class="copyright_text">2024 All Rights Reserved.</p>
+        </div>
+     </div>
+     <script>
+        let userData = {};
+
+        function checkNextButtonState() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            const textInputs = document.querySelectorAll('input[type="text"]');
+            let isEnabled = false;
+
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    isEnabled = true;
+                }
+            });
+
+            textInputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    isEnabled = true;
+                }
+            });
+
+            document.getElementById('next-button').disabled = !isEnabled;
+        }
+
+        document.addEventListener('change', checkNextButtonState);
+        document.addEventListener('input', checkNextButtonState);
+
+        document.getElementById('next-button').addEventListener('click', function() {
+            var questionNumberElement = document.getElementById('question-number');
+            var questionText = document.getElementById('question-text');
+            var radioButtons = document.getElementById('radio-buttons');
+            var prevButton = document.getElementById('prev-button');
+
+            checkNextButtonState();
+            
+            var currentQuestionNumber = parseInt(questionNumberElement.textContent.slice(1));
+            questionNumberElement.textContent = "#" + (currentQuestionNumber + 1);
+            
+            if (currentQuestionNumber == 2) {
+                userData.age = parseInt(document.querySelector('input[name="age"]:checked').value);
+                questionText.textContent = "HOW TALL ARE YOU?";
+                radioButtons.innerHTML = `
+                <input type="text" id="height" name="height" placeholder="Enter your height (in cm)" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; box-sizing: border-box; margin-bottom: 20px;">
+                `;
+            } else if (currentQuestionNumber == 3){
+                userData.height = parseFloat(document.getElementById('height').value);
+                questionText.textContent = "HOW MUCH DO YOU WEIGH?";
+                radioButtons.innerHTML = `
+                <input type="text" id="weight" name="weight" placeholder="Enter your weight (in kg)" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; box-sizing: border-box; margin-bottom: 20px;">
+                `;
+            } else if (currentQuestionNumber == 4){
+                userData.weight = parseFloat(document.getElementById('weight').value);
+                questionText.textContent = "WHAT IS YOUR BODY FAT PERCENTAGE?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="10bfp" name="bfp" value="10b">
+                    <label for="10bfp">10%</label>
+                    <input type="radio" id="15bfp" name="bfp" value="15">
+                    <label for="15bfp">15%</label>
+                    <input type="radio" id="20bfp" name="bfp" value="20">
+                    <label for="20bfp">20%</label>
+                    <input type="radio" id="25bfp" name="bfp" value="25">
+                    <label for="25bfp">25%</label>
+                    <input type="radio" id="30bfp" name="bfp" value="30">
+                    <label for="30bfp">30%</label>
+                `;
+            } else if (currentQuestionNumber == 5){
+                userData.fat = parseInt(document.querySelector('input[name="bfp"]:checked').value);
+                questionText.textContent = "HOW ACTIVE ARE YOU?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="little" name="activity" value="1.2">
+                    <label for="little">Little To No</label>
+                    <input type="radio" id="light" name="activity" value="1.375">
+                    <label for="light">Lightly Active</label>
+                    <input type="radio" id="moderate" name="activity" value="1.55">
+                    <label for="moderate">Moderate</label>
+                    <input type="radio" id="high" name="activity" value="1.725">
+                    <label for="high">High Intensity</label>
+                `;
+            } else if (currentQuestionNumber == 6){
+                userData.activity = parseFloat(document.querySelector('input[name="activity"]:checked').value);
+                questionText.textContent = "WHAT IS YOUR GOAL?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="lose" name="goal" value="lose">
+                    <label for="lose">Lose Weight</label>
+                    <input type="radio" id="gain" name="goal" value="gain">
+                    <label for="gain">Gain Weight</label>
+                `;
+            } else if (currentQuestionNumber == 1){
+                userData.gender = document.querySelector('input[name="gender"]:checked').value;
+                prevButton.style.display = 'block';
+                questionText.textContent = "HOW OLD ARE YOU?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="age-18-24" name="age" value="21">
+                    <label for="age-18-24">18-24</label>
+                    <input type="radio" id="age-25-29" name="age" value="27">
+                    <label for="age-25-29">25-29</label>
+                    <input type="radio" id="age-30-36" name="age" value="33">
+                    <label for="age-30-36">30-36</label>
+                    <input type="radio" id="age-37-42" name="age" value="40">
+                    <label for="age-37-42">37-42</label>
+                    <input type="radio" id="age-43-47" name="age" value="45">
+                    <label for="age-43-47">43-47</label>
+                    <input type="radio" id="age-48-55" name="age" value="51">
+                    <label for="age-48-55">48-55</label>
+                `;
+            } else {
+                userData.goal = document.querySelector('input[name="goal"]:checked').value;
+                questionText.textContent = "PLEASE FILL OUT THIS FORM";
+                radioButtons.innerHTML = `
+                    <form id="user-form" action="/submit" method="POST">
+                        <div>
+                            <label for="first-name" style="border: none;">First Name:</label><br>
+                            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 600px; box-sizing: border-box;" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="last-name" style="border: none;">Last Name:</label><br>
+                            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%; box-sizing: border-box;" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="phone-number" style="border: none;">Phone Number:</label><br>
+                            <input type="text" id="phone-number" name="phone-number" placeholder="Enter your phone number" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%; box-sizing: border-box;" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="email" style="border: none;">Email:</label><br>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%; box-sizing: border-box;" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="email-confirm" style="border: none;">Confirm Email:</label><br>
+                            <input type="email" id="email-confirm" name="email-confirm" placeholder="Confirm your email" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%; box-sizing: border-box;" required>
+                        </div>
+                        <br>
+                        <input type="hidden" name="gender" value="${userData.gender}">
+                        <input type="hidden" name="age" value="${userData.age}">
+                        <input type="hidden" name="weight" value="${userData.weight}">
+                        <input type="hidden" name="height" value="${userData.height}">
+                        <input type="hidden" name="fat" value="${userData.fat}">
+                        <input type="hidden" name="activity" value="${userData.activity}">
+                        <button type="submit" style="background-color: #b39e5c; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; font-size: 16px;">Submit</button>
+                    </form>
+                `;
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('user-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    const formData = {
+                        firstName: document.getElementById('first-name').value,
+                        lastName: document.getElementById('last-name').value,
+                        phoneNumber: document.getElementById('phone-number').value,
+                        email: document.getElementById('email').value,
+                        emailConfirm: document.getElementById('email-confirm').value,
+                        gender: userData.gender,
+                        age: userData.age,
+                        weight: userData.weight,
+                        height: userData.height,
+                        fat: userData.fat,
+                        activity: userData.activity,
+                        goal: userData.goal
+                    };
+
+                    fetch('/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.bmr && data.calories && data.protein) {
+                            window.location.href = `/result?bmr=${data.bmr}&calories=${data.calories}&protein=${data.protein}&fat=${data.fat}&carbs=${data.carbs}`;
+                        } else {
+                            console.error('BMR not returned in response');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                });
+            }
+            document.getElementById('next-button').disabled = true;
+        });
+        document.getElementById('prev-button').addEventListener('click', function() {
+            var questionNumberElement = document.getElementById('question-number');
+            var questionText = document.getElementById('question-text');
+            var radioButtons = document.getElementById('radio-buttons');            
+            var currentQuestionNumber = parseInt(questionNumberElement.textContent.slice(1));
+            questionNumberElement.textContent = "#" + (currentQuestionNumber - 1);
+            
+            if (currentQuestionNumber == 4) {
+                questionText.textContent = "HOW TALL ARE YOU?";
+                radioButtons.innerHTML = `
+                <input type="text" id="height" name="height" placeholder="Enter your height (in cm)" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; box-sizing: border-box; margin-bottom: 20px;">
+                `;
+            } else if (currentQuestionNumber == 5){
+                questionText.textContent = "HOW MUCH DO YOU WEIGH?";
+                radioButtons.innerHTML = `
+                <input type="text" id="weight" name="weight" placeholder="Enter your weight (in kg)" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; box-sizing: border-box; margin-bottom: 20px;">
+                `;
+            } else if (currentQuestionNumber == 6){
+                questionText.textContent = "WHAT IS YOUR BODY FAT PERCENTAGE?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="10bfp" name="bfp" value="10bfp">
+                    <label for="10bfp">10%</label>
+                    <input type="radio" id="15bfp" name="bfp" value="15bfp">
+                    <label for="15bfp">15%</label>
+                    <input type="radio" id="20bfp" name="bfp" value="20bfp">
+                    <label for="20bfp">20%</label>
+                    <input type="radio" id="25bfp" name="bfp" value="25bfp">
+                    <label for="25bfp">25%</label>
+                    <input type="radio" id="30bfp" name="bfp" value="30bfp">
+                    <label for="30bfp">30%</label>
+                `;
+            } else if (currentQuestionNumber == 7){
+                questionText.textContent = "HOW ACTIVE ARE YOU?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="little" name="activity" value="little">
+                    <label for="little">Little To No</label>
+                    <input type="radio" id="light" name="activity" value="light">
+                    <label for="light">Lightly Active</label>
+                    <input type="radio" id="moderate" name="activity" value="moderate">
+                    <label for="moderate">Moderate</label>
+                    <input type="radio" id="high" name="activity" value="high">
+                    <label for="high">High Intensity</label>
+                `;
+            } else if (currentQuestionNumber == 8){
+                document.getElementById('next-button').style.display = 'block';
+                questionText.textContent = "WHAT IS YOUR GOAL?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="lose" name="goal" value="lose">
+                    <label for="lose">Lose Weight</label>
+                    <input type="radio" id="gain" name="goal" value="gain">
+                    <label for="gain">Gain Weight</label>
+                `;
+            } else if (currentQuestionNumber == 3){
+                questionText.textContent = "HOW OLD ARE YOU?";
+                radioButtons.innerHTML = `
+                    <input type="radio" id="age-18-24" name="age" value="18-24">
+                    <label for="age-18-24">18-24</label>
+                    <input type="radio" id="age-25-29" name="age" value="25-29">
+                    <label for="age-25-29">25-29</label>
+                    <input type="radio" id="age-30-36" name="age" value="30-36">
+                    <label for="age-30-36">30-36</label>
+                    <input type="radio" id="age-37-42" name="age" value="37-42">
+                    <label for="age-37-42">37-42</label>
+                    <input type="radio" id="age-43-47" name="age" value="43-47">
+                    <label for="age-43-47">43-47</label>
+                    <input type="radio" id="age-47-55" name="age" value="47-55">
+                    <label for="age-47-55">47-55</label>
+                `;
+            } else {
+                document.getElementById('prev-button').style.display = 'none';
+                questionText.textContent = "WHAT IS YOUR GENDER?";
+                radioButtons.innerHTML = `
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
